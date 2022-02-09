@@ -16,7 +16,7 @@ app.MapGet("/v1/products", ([FromServices] IProductRepository productRepository)
 app.MapPost("/v1/product", ([FromServices] IProductRepository productRepository, Product product) =>
 {
     var result = productRepository.Add(product);
-    return (result ? Results.Ok($"Product {product.Name} include sucess!"):Results.BadRequest("Could not possible include product!"));
+    return (result ? Results.Ok($"Product {product.Name} created sucess!"):Results.BadRequest("Could not possible create product!"));
 });
 
 app.MapPut("/v1/product", ([FromServices] IProductRepository productRepository, string name, int id) =>
