@@ -56,6 +56,17 @@ namespace MinimalApiDapper.Repositories
             return products;
         }
 
+        public Product GetById(int id)
+        {
+            var parameters = new { productid = id };
+
+            using (_dbConnection)
+            {
+                var result = _dbConnection.QueryFirstOrDefault<Product>("SELECT * FROM [DbProduct].[dbo].[Product] WHERE [Id] = @productid", parameters);
+                return result;
+            }
+        }
+
         public bool Update(string name, int id)
         {
             var query = "UPDATE [DbProduct].[dbo].[Product] SET [Name] = @productName WHERE [Id] = @productid";

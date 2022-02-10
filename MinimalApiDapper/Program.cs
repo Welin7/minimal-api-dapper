@@ -31,4 +31,9 @@ app.MapDelete("/v1/product", ([FromServices] IProductRepository productRepositor
     return (result ? Results.Ok($"Product deleted with sucess!") : Results.BadRequest("Could not possible delete the product!"));
 });
 
+app.MapGet("/v1/product", ([FromServices] IProductRepository productRepository, int id) =>
+{
+    return productRepository.GetById(id);
+});
+
 app.Run();
