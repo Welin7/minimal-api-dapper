@@ -35,5 +35,4 @@ app.MapGet("/v1/product", ([FromServices] IProductRepository productRepository, 
 {
     return productRepository.GetById(id);
 });
-
 app.Run();
